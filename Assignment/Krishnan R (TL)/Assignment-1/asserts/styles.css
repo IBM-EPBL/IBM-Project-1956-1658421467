@@ -1,0 +1,34 @@
+body {
+  overflow-x: hidden;
+}
+
+#sm {
+  cursor: pointer;
+}
+
+marquee {
+  background-color: #000000;
+  margin-top: 5rem;
+  padding: 1rem;
+  width: 110vw;
+  animation: marquee 32s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-10%);
+  }
+}
+
+marquee div {
+  position: relative;
+  left: -97%;
+}
+
+marquee img {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
