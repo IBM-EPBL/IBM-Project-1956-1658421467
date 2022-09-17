@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,400&display=swap");
+
+:root {
+  --gray: #525252;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.wrapper {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.top {
+  color: var(--gray);
+  display: flex;
+  margin-block: 1em;
+  justify-content: space-between;
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.social {
+  aspect-ratio: 1;
+  height: 1.4em;
+}
+
+.insta {
+  height: 1.2em;
+}
+
+.bottom {
+  border-radius: 1em 1em 0 0;
+  box-shadow: 0 0 0.5em 0.1em rgba(0, 0, 0, 0.1);
+}
+
+.head {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("./wallpaper.jpg");
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: space-around;
+  padding: 2em 4em 1em 4em;
+  color: white;
+}
+
+.pic {
+  width: 12em;
+  height: 12em;
+  object-fit: cover;
+  border: 10px solid white;
+  transform: translateY(3em);
+}
+
+h3 {
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+  color: var(--gray);
+}
+
+.basic h3 {
+  color: white;
+}
+
+.basic p {
+  color: rgb(230, 230, 230);
+}
+
+.buttons {
+  display: flex;
+  gap: 1em;
+  margin-top: 2em;
+}
+
+.btn {
+  padding: 0.75em 1.5em;
+  border-radius: 1.5em;
+  cursor: pointer;
+  font-weight: 700;
+  border: none;
+}
+
+.btn-cv {
+  color: var(--gray);
+}
+
+.btn-hire {
+  background-color: rgb(14, 234, 153);
+}
+
+.divide {
+  margin-top: 3em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.wrap {
+  padding: 1em 3.5em;
+  border-bottom: 1px solid rgb(182, 182, 182);
+}
+
+.about h3 {
+  margin-bottom: 0.75em;
+}
+
+.about p {
+  color: var(--gray);
+}
+
+table {
+  color: var(--gray);
+  margin-left: 7em;
+}
+
+.skills {
+  margin-top: 2em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3em;
+}
+
+.skill-bar,
+.skill-bar-fill {
+  overflow: hidden;
+  background-color: #e4e4e4;
+  height: 20px;
+  width: 100%;
+  border-radius: 2px;
+  margin-bottom: 1.5em;
+  position: relative;
+}
+
+.left {
+  --color: rgb(14, 150, 234);
+}
+
+.right {
+  --color: rgb(14, 234, 153);
+}
+
+.skill-bar-fill {
+  position: absolute;
+  background-color: var(--color);
+  transform: translateX(var(--trans));
+}
