@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>User Registeration Form</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">              
+</head>
+<body>
+<div class="container">
+	<h2>User Registration</h2>
+	<form action="{{ url_for('register') }}" method="post">
+        {% if mesage is defined and mesage %}
+			<div class="alert alert-warning">{{ mesage }}</div>
+		{% endif %}
+		<div class="form-group">
+			<label for="name">Name:</label>
+			<input type="text" class="form-control" id="name" name="name" placeholder="Enter the full name" name="name">
+		</div>
+		<div class="form-group">
+			<label for="email">Email:</label>
+			<input type="email" class="form-control" id="email_id" name="emailid" placeholder="example@gmail.com" name="email">
+		</div>
+		<div class="form-group">
+			<label for="pwd">Password:</label>
+			<input type="password" class="form-control" id="password" name="password" placeholder="Password" name="pswd">
+		</div>    
+		<button type="submit" class="btn btn-primary">Register</button>
+		<p class="bottom">Existing User?  <a class="bottom" href="{{url_for('login')}}"> Login here</a></p>
+	</form>
+</div>        
+</body>
+</html>
