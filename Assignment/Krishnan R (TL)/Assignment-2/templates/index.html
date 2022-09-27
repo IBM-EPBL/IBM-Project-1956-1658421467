@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Home Page</title>
+</head>
+<body class="bg-blue-100">
+    <div class="flex h-screen">
+        <div class="m-auto">
+          <h4>Hey Welcome, {{name}}</h4>
+          <button
+                    onclick="window.location.href='logout'"
+                    type="submit"
+                    class="w-full text-center py-3 rounded bg-blue-700 text-white hover:bg-blue-800 focus:outline-none my-1"
+            >
+               Login Out
+            </button>
+        </div>
+    </div>
+</body>
+</html>
