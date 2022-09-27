@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="alert alert-success" role="alert">
+        {{ msg }}
+    </div>
+</div>
+
+<div class="card" id="topdiv0" align="center">
+    <form class="px-4 py-3" method="POST" action="{{ url_for('log')}}">
+        <h5 class="card-title">Login</h5>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" required="required" class="form-control" name="username"  autofocus><br><br>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" required="required" class="form-control" name="password"><br><br>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" href="{{ url_for('insert') }}">New around here? Sign up</a>
+</div>

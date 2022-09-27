@@ -1,0 +1,28 @@
+<div id="topdiv1" class="card" align="center">
+		<form class="px-4 py-3" method="POST" action="{{ url_for('insert') }}">
+			<h5 class="card-title">REGISTER</h5>
+		    <div class="form-group">
+		      <label for="name">Full Name</label>
+		      <input type="text" required="required" class="form-control" name="name"  autofocus><br><br>
+		    </div>
+		    <div class="form-group">
+			      <label for="rollno">Rollno</label>
+			      <input type="text" required="required" class="form-control" name="rollno" ><br><br>
+			    </div>
+			<div class="form-group">
+					<label for="email">Email</label>
+					<input type="email" required="required" class="form-control" name="email" ><br><br>
+				  </div>
+		    <div class="form-group">
+		      <label for="password">Password</label>
+		      <input type="password" required="required" class="form-control" name="password" ><br><br>
+		    </div>
+		    <div class="form-group">
+		      <label for="password">Confirm Password</label>
+		      <input type="password" required="required" class="form-control" name="repassword" ><br><br>
+		    </div>
+		    <button type="submit" class="btn btn-primary">Sign up</button>
+		</form>
+		<div class="dropdown-divider"></div>
+		<a class="dropdown-item" href="{{ url_for('authenticate') }}">Already have an account? Log in</a>
+	</div>
