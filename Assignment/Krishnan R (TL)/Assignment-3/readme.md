@@ -1,12 +1,14 @@
-### Object Store Assignment
+# Object Store Assignment
 
 <figure>
 <a href="https://s3.jp-tok.cloud-object-storage.appdomain.cloud/krishnan-ramalingam/index.html"><img src="./asserts/obj_str1.png" alt="Hosted" style="width:70%"></a>
 <br>
-<figcaption><b>Click Image to Open Link</b></figcaption>
+<figcaption><i><b>Click Image to Open Link</b></i></figcaption>
 </figure>
 
-### Screenshots
+<br>
+
+### <b>Screenshots</b>
 
 <table>
 	<thead>
@@ -26,7 +28,3 @@
 		</td>
 	</tr>
 </table>
-
-#
-
-#
