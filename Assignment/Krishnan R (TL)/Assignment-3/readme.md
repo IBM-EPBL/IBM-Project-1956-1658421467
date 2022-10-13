@@ -2,6 +2,7 @@
 
 <figure>
 <a href="https://s3.jp-tok.cloud-object-storage.appdomain.cloud/krishnan-ramalingam/index.html"><img src="./asserts/obj_str1.png" alt="Hosted" style="width:70%"></a>
+<br>
 <figcaption><b>Click Image to Open Link</b></figcaption>
 </figure>
 
