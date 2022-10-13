@@ -1,7 +1,7 @@
 # Watson AI Assignment
 
 <figure>
-<a href="https://s3.jp-tok.cloud-object-storage.appdomain.cloud/krishnan-ramalingam/index.html"><img src="./asserts/watson1.png" alt="Hosted" style="width:70%"></a>
+<a href="https://s3.jp-tok.cloud-object-storage.appdomain.cloud/krishnan-ramalingam/index.html"><img src="./asserts/watson1.png" alt="Hosted" style="width:90%"></a>
 <br>
 <figcaption><i><b>Click Image to Open Link</b></i></figcaption>
 </figure>
