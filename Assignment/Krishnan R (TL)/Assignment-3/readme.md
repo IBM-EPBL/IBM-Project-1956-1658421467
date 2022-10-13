@@ -13,4 +13,4 @@
 4.Design a chatbot using IBM Watson assistant for hospital. Ex: User comes with query to know the branches for that hospital in your city. Submit the web URL of that chat bot as a assignment.
 5.Create Watson assistant service with 10 steps and use 3 conditions in it. Load that script in HTML page.
 
-<a href="\Part-B">Check out Part A</a>
+<a href="\Part-B">Check out Part B</a>
