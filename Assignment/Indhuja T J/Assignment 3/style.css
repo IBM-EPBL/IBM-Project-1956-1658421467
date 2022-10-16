@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+*{
+    padding:0px;
+    margin:0px;
+    box-sizing:border-box;
+    font-family:'Open Sans'
+}
+html{
+    overflow-x:hidden ;
+}
+body{
+    background-color:white;
+}
+
+.head{
+    display:none;
+    background-color: black;
+    color:white;
+    display: grid;
+    grid-template-columns: 20fr 3fr;
+    font-size: .8em;
+    z-index:1;
+    position:sticky;
+    top:0px;
+    opacity:80%;
+}
+
+.head h1{
+    font-size: 1.8em;
+    margin:14px;
+}
+.a-l{
+    border:1px solid white;
+    background:black;
+    color:white;
+    margin-top:10px;
+    width:100px;
+    height:40px;
+    transform:translate(5px,0px)
+}
+.head a{
+    color:white;
+    padding:10px;
+    text-decoration: none;
+    transition:all .3s ease-in;
+}
+.head a:hover{
+    color:grey;
+}
+
+
+.line{
+    width:60%;
+    height:5px;
+    background-color: black;
+    margin-bottom:20px;
+    
+}
+.contents{
+    display:grid;
+    grid-template-columns:15fr 5fr;
+    
+}
+.right{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 2px;
+}
+
+.right-s{
+    grid-template-rows: 1fr;
+}
+.a-l-s{
+    display: none;
+}
+.nav {
+    padding:15px 0px;    
+}
+
+
+
+
+.btn{
+    background-color: black;
+    border: none;
+    color:white;
+    width:80px;
+}
+.like button{
+    margin:0px 40px;
+    width:100px;
+    height: 50px;
+    background:white;
+    border:2px solid black;
+    transition:all .3s ease-in;
+}
+.like button:hover{
+    background-color: black;
+    color:white;
+}
+
+
+
+
+.form{
+    display:grid;
+    height:80vh;
+    justify-content: center;
+    align-content: center;
+}
+.lk{
+    margin:30px;
+}
+.text{
+    padding:10px;
+    height:40px;
+    border:none;
+    border-bottom: 1px solid black;
+    margin:10px 20px;
+    width:290px;
+}
+.l{
+    margin:50px;
+}
+.l input{
+    padding:10px;
+    margin:10px 0px;
+}
+
+.sub{
+    padding:10px;
+    height:40px;
+    width:100px;
+    border:none;
+    background-color:black;
+    color:white;
+    margin:20px;
+}
+
+a{
+    color:black;
+    text-decoration: none;
+}
+textarea{
+    width:500px;
+    height:300px;
+    padding:10px;
+}
+p{
+    margin-top:10px;
+    margin-left:150px;
+}
+
+
+
+.danger{
+    border-bottom:1px solid red;
+}
+.ok{
+    border-bottom: 1px solid green;
+}
+.med{
+    border-bottom: 1px solid orange; 
+}
+.lk p{
+    visibility: hidden;
+    color:red;
+    position: absolute;
+    transform:translate(200px,-50px);
+}

@@ -1,0 +1,21 @@
+*{
+    padding:0px;
+    margin:0px;
+    box-sizing:border-box;
+    font-family:'Open Sans'
+}
+
+body{
+    background-color:rgb(247, 244, 253);
+}
+
+.title{
+   
+    background-image: radial-gradient(circle , #553c9a , #ee4b2b);
+    color:transparent;
+    font-weight: 600;
+    background-clip: text; 
+    font-size: 40px;
+    -webkit-background-clip: text;
+    text-align: center;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBM Assignment 3</title>
+    <link rel="stylesheet" href="https://vineetha-rs-ibm.s3.jp-tok.cloud-object-storage.appdomain.cloud/style.css">
+</head>
+
+<body class="bg-gray-200">
+    <div class="title">IBM Object Store & Watson Assistant</div>
+    <div class="image-grid">
+        <img width="300px" height="270px"  src="https://vineetha-rs-ibm.s3.jp-tok.cloud-object-storage.appdomain.cloud/545586.jpg" />
+        <img width="300px" height="270px" src="https://vineetha-rs-ibm.s3.jp-tok.cloud-object-storage.appdomain.cloud/820828.jpg" />
+        <img width="300px" height="270px" src="https://vineetha-rs-ibm.s3.jp-tok.cloud-object-storage.appdomain.cloud/820854.jpg" />
+        <img width="300px" height="270px" src="https://vineetha-rs-ibm.s3.jp-tok.cloud-object-storage.appdomain.cloud/841778.jpg" />
+        <img width="300px" height="270px" src="https://vineetha-rs-ibm.s3.jp-tok.cloud-object-storage.appdomain.cloud/841833.jpg" /> 
+    </div>
+
+    <!-- hospital assistant & general assistant -->
+    <!-- IBM WATSON Chatbots  -->
+    <script>
+        window.watsonAssistantChatOptions = {
+          integrationID: "208d2fdb-0d14-4116-b027-38bf8feabc1d", // The ID of this integration.
+          region: "au-syd", // The region your integration is hosted in.
+          serviceInstanceID: "69f8abf8-add2-4f4e-b91c-f3cfa46dfab7", // The ID of your service instance.
+          onLoad: function(instance) { instance.render(); }
+        };
+        setTimeout(function(){
+          const t=document.createElement('script');
+          t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+          document.head.appendChild(t);
+        });
+      </script>
+</body>
+</html>
