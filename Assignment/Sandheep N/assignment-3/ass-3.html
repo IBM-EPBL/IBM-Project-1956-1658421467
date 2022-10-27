@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Display Images
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        window.watsonAssistantChatOptions = {
+          integrationID: "0032bdd2-5b59-4312-a00c-cece7ea268f0", // The ID of this integration.
+          region: "au-syd", // The region your integration is hosted in.
+          serviceInstanceID: "30b01793-f193-4ada-a147-4610ae753688", // The ID of your service instance.
+          onLoad: function(instance) { instance.render(); }
+        };
+        setTimeout(function(){
+          const t=document.createElement('script');
+          t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+          document.head.appendChild(t);
+        });
+    </script>
+</head>
+<body>
+    <h2>Images From Cloud Object Storage</h2>
+    <br>
+    <div class="container">
+        <div class="row">
+          <div class="col">
+            <img src="https://inventroymanagementsystemprakashmani.s3.jp-tok.cloud-object-storage.appdomain.cloud/ibm image/prakashmani.jpg" alt = "prakashmani" class="img-fluid" style="width: 300px;height: 250px;"></img>
+          </div>
+          <div class="col">
+            <img src="https://inventroymanagementsystemprakashmani.s3.jp-tok.cloud-object-storage.appdomain.cloud/ibm image/prakashmani1.jpg" class="img-fluid" alt = "prakashmani" style="width: 250px;height: 250px;"></img>
+          </div>
+          <div class="col">
+            <img src="https://inventroymanagementsystemprakashmani.s3.jp-tok.cloud-object-storage.appdomain.cloud/ibm image/prakashmani2.jpg" class="img-fluid" alt = "prakashmani" style="width: 250px;height: 250px;"></img>
+          </div>
+          <div class="col">
+            <img src="https://inventroymanagementsystemprakashmani.s3.jp-tok.cloud-object-storage.appdomain.cloud/ibm image/prakashmani3.jpg" class="img-fluid" alt = "prakashmani" style="width: 250px;height: 250px;"></img>
+          </div>
+          <div class="col">
+            <img src="https://inventroymanagementsystemprakashmani.s3.jp-tok.cloud-object-storage.appdomain.cloud/ibm image/prakashmani4.jpg" class="img-fluid" alt = "prakashmani" style="width: 250px;height: 250px;"></img>  
+          </div>
+        </div>
+    </div>
+    
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>

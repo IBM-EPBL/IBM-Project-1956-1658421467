@@ -1,0 +1,8 @@
+img{
+    width: 150px;
+    height: 150px;
+    margin-right: 30px;   /* Horizontal Space */
+    margin-bottom: 30px;  /* Vertical Space */
+    border-color: 2px rgb(0, 0, 0);
+    border-radius: 10px;
+ }
