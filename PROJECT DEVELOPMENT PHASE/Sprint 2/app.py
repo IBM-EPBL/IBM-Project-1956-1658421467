@@ -33,13 +33,33 @@ def register(u, p, e):
         return render_template('signup.html', error="Error in inserting user")
 
 
+def add_finance_record(u, a, c, d, dt):
+    try:
+        r = utils.createFinanceRecord(u, a, c, d, dt)
+        return redirect(url_for('dashboard'))
+    except:
+        return redirect(url_for('dashboard'))
+
+
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         return check_credentials(request.form['username'], request.form['password'])
     else:
         if session.get('logged_in'):
-            return render_template('index.html', name=session['username'])
+            return redirect(url_for('dashboard'))
+        return render_template('login.html')
+
+
+@app.route('/dashboard', methods=['GET', 'POST'])
+def dashboard():
+    if request.method == 'POST':
+        return add_finance_record(request.form['username'], request.form['category'], request.form['amount'], request.form['description'], request.form['date'])
+    else:
+        if session.get('logged_in'):
+            username = session['username']
+            rows = utils.fetchFinanceRecord(username)
+            return render_template('dashboard.html', rows=rows)
         return render_template('login.html')
 
 
