@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Dashboard Page</title>
+</head>
+<body class="bg-gray-150">
+
+    <nav class="flex items-center justify-between flex-wrap bg-blue-500 p-6">
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+          <span class="font-semibold text-xl tracking-tight">Personal Finance Tracker</span>
+        </div>
+        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+          <div class="text-sm lg:flex-grow">
+            <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+              Dashboard
+            </a>
+            <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+              Graph
+            </a>
+            <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+              Configure
+            </a>
+          </div>
+        </div>
+      </nav>
+
+    <div class="bg-gray-lighter min-h-screen flex flex-col">
+        <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+            {% if error %}
+            <div class="bg-red-100 border-red-200 border-2 rounded-md p-2 mt-2 mb-2 w-full text-center " >{{error}}</div>
+            {% endif %}
+          
+                        
+            <div class="bg-green-100 w-[80vw] text-right border-green-200 border-2 rounded-md p-2 mt-[2px] mb-[2px] w-full " >{{error}}</div>
+            <div class="bg-red-100 w-[80vw] text-right border-red-200 border-2 rounded-md p-2 mt-[2px] mb-[2px] w-full " >{{error}}</div>
+          
+        </div>
+    </div>
+</body>
+</html>
