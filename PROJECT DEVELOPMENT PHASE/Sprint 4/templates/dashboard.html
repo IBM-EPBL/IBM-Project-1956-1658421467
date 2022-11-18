@@ -33,13 +33,13 @@
           type="submit"
           class="w-full float-right w-32 text-center py-3 rounded bg-blue-700 text-white hover:bg-blue-800 focus:outline-none"
           >
-            Login Out
+            Log Out
           </button>
         </div>
       </nav>
 
       <div>
-        <form method="POST" class="bg-gray-100 shadow-xl rounded w-[32rem] px-12 pt-6 pb-8 m-8 mt-8">
+        <form method="POST" class="bg-gray-100 shadow-xl rounded w-[31rem] px-12 pt-6 pb-8 m-8 mt-8">
           <div class="flex">
             <div class="mb-4">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="amount">
@@ -54,7 +54,7 @@
             </label>
               <div class="form-group bg-white shadow appearance-none border rounded h-10 w-50  text-gray-900 leading-tight focus:outline-none">
                 <select class="bg-white focus:ring-0 px-2 py-2"   name="category"  id="category">
-                  <option value="Salary Credited">Salary Credited</option>
+                  <option value="Salary Credited">Salary</option>
                   <option value="Festival Bonus">Festival Bonus</option>
                   <option selected="selected" value="EMI">EMI</option>
                   <option value="Food">Food</option>
@@ -90,18 +90,34 @@
 
       <div class="flex">
         <div style="overflow-y: scroll; height:45vh">
+          <div class="font-bold text-2xl px-8 py-2 m-8 mt-2 mb-2 pt-2 pl-2">Recent Transaction</div>
           {%for i in range(0, len)%}
-              <div class="bg-blue-100 flex w-[40vw] text-right border-blue-200 border-2 rounded-md px-8 py-2 m-8 mt-2 mb-2 pt-2 pl-2" >
-                <span class="w-[12%]  mb-4 text-[0.6rem] text-blue-800 mr-8">{{rows[i]['DATE'].strip()}}</span>  
+              {% if rows[i]['AMOUNT']>0 %}
+                <div class="bg-green-100 flex w-[40vw] text-right border-green-200 border-2 rounded-md px-8 py-2 m-8 mt-2 mb-2 pt-2 pl-2" >
+                <span class="w-[12%]  mb-4 text-[0.6rem] text-green-800 mr-8">{{rows[i]['DATE'].strip()}}</span>  
+              {% else %}
+                <div class="bg-red-100 flex w-[40vw] text-right border-red-200 border-2 rounded-md px-8 py-2 m-8 mt-2 mb-2 pt-2 pl-2" >
+                <span class="w-[12%]  mb-4 text-[0.6rem] text-red-800 mr-8">{{rows[i]['DATE'].strip()}}</span>  
+              {% endif %}
                 <span class="w-[30%]">{{rows[i]['CATEGORY'].strip()}}</span>  
                 <span class="w-[30%]"></span>  
                 <span class="w-[20%] float-right">Rs {{rows[i]['AMOUNT']}}</span>  
               </div>
-          {%endfor%}
+              {%endfor%}
+
+          <div class="bg-red-100 flex w-[40vw] text-right border-red-200 border-2 rounded-md px-8 py-2 m-8 mt-2 mb-2 pt-2 pl-2 invisible" >Placeholder</div>
         </div>
-        <div class="stats px-8 py-2 m-8 mt-8">
+        <div class="px-8 py-2 m-8 mt-2">
             <div class="font-bold text-2xl">Stats for the month</div>
-            <div></div>
+            <div class="w-[30vw] mt-4">
+              <div>
+                <div class="mb-1 text-lg font-medium dark:text-white">Monthly Expense</div>
+                <div class="w-full h-6 bg-gray-300 rounded-full dark:bg-gray-700">
+                  <div class="h-6 bg-red-600 rounded-full dark:bg-red-500" style="width: {{percent}}"></div>
+                  <span class="mb-1 text-xs float-right pr-2 pt-2">{{left}} </span>
+                </div>     
+              </div>
+            </div>       
         </div>
       </div>
     

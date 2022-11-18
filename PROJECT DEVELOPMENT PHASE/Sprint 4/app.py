@@ -54,6 +54,11 @@ def add_finance_record(e, a, c, d, dt):
         return redirect(url_for('dashboard'))
 
 
+@app.route('/graph', methods=['GET', 'POST'])
+def graph():
+    return render_template('graph.html')
+
+
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -78,8 +83,13 @@ def dashboard():
         if session.get('logged_in'):
             email = session['email']
             rows = utils.fetchFinanceRecord(email)
+            spending = utils.getIncomeExpend(email)
+            percent = (spending['expend']*100)/spending['income']
+            percent = min(100, percent)
             l = len(rows)
-            return render_template('dashboard.html', rows=rows, len=l)
+            left = str(spending['expend']) + \
+                " spent out of "+str(spending['income'])
+            return render_template('dashboard.html', rows=rows, len=l, left=left, percent=str(percent)+"%")
         return render_template('login.html')
 
 

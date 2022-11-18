@@ -1,4 +1,8 @@
+import uuid
 from connect import execDB, execReturn
+positive_money = ['Salary', 'Festival Bonus']
+negative_money = ['EMI', 'Food', 'Transportation', 'Groceries',
+                  'Clothing', 'Electronic', 'Entertainment', 'Rent', 'Vacations']
 
 
 def addUser(name, email, password):
@@ -27,10 +31,21 @@ def fetchFinanceRecord(email):
     return r
 
 
+def getIncomeExpend(email):
+    sql_fd1 = f"SELECT SUM(AMOUNT) FROM finance WHERE AMOUNT>0 AND email='{email}'"
+    sql_fd2 = f"SELECT SUM(AMOUNT) FROM finance WHERE AMOUNT<0 AND email='{email}'"
+    r1 = execReturn(sql_fd1)
+    r2 = execReturn(sql_fd2)
+    print(r1, r2)
+    return {"income": r1[0]['1'], "expend": -r2[0]['1']}
+
+
 def createFinanceRecord(email, category, amount, description, date):
     amount = int(amount)
+    if category in negative_money:
+        amount = -amount
     print("FINANCE", email, amount, category, description, date)
-    sql_st = f"INSERT INTO finance(email , amount , category , description , date ) values ( '{email}' , {amount} , '{category}' , '{description}' , '{date}' )"
+    sql_st = f"INSERT INTO finance(id,email , amount , category , description , date ) values ( '{uuid.uuid1()}','{email}' , {amount} , '{category}' , '{description}' , '{date}' )"
     r = execDB(sql_st)
     print(r)
     return "Record created successfully"

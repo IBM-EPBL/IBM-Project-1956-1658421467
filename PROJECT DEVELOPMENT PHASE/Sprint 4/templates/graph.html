@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Home Page</title>
+</head>
+<body class="bg-gray-150">
+
+    <nav class="flex items-center justify-between flex-wrap bg-blue-500 p-6">
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+          <span class="font-semibold text-xl tracking-tight">Personal Finance Tracker</span>
+        </div>
+        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+          <div class="text-sm lg:flex-grow">
+            <a href="/dashboard" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+              Dashboard
+            </a>
+            <a href="/graph" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+              Graph
+            </a>
+            <a href="/configure" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+              Configure
+            </a>
+          </div>
+          <button
+          onclick="window.location.href='logout'"
+          type="submit"
+          class="w-full float-right w-32 text-center py-3 rounded bg-blue-700 text-white hover:bg-blue-800 focus:outline-none"
+          >
+            Log Out
+          </button>
+        </div>
+      </nav>
+
+
+    
+</body>
+</html>
