@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
     <title>Dashboard Page</title>
 </head>
 <body class="bg-gray-150">
@@ -17,27 +18,34 @@
         </div>
         <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <div class="text-sm lg:flex-grow">
-            <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+            <a href="/dashboard" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
               Dashboard
             </a>
-            <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+            <a href="/graph" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
               Graph
             </a>
-            <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+            <a href="/configure" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
               Configure
             </a>
           </div>
+          <button
+          onclick="window.location.href='logout'"
+          type="submit"
+          class="w-full float-right w-32 text-center py-3 rounded bg-blue-700 text-white hover:bg-blue-800 focus:outline-none"
+          >
+            Login Out
+          </button>
         </div>
       </nav>
 
       <div>
-        <form class="bg-white shadow-xl rounded w-[30rem] px-8 pt-6 pb-8 m-8 mt-8">
+        <form method="POST" class="bg-white shadow-xl rounded w-[30rem] px-8 pt-6 pb-8 m-8 mt-8">
           <div class="flex">
             <div class="mb-4">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="amount">
                 Amount
             </label>
-              <input class="shadow appearance-none border rounded w-48 py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" name="amount" id="amount" type="number" placeholder="475.50">
+              <input class="shadow appearance-none border rounded w-48 py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" name="amount" id="amount" type="number" placeholder="475">
             </div>
     
             <div class="mb-4 ml-12">
@@ -80,11 +88,19 @@
       </div>
 
       <div class="flex">
-        <div>
-          <div class="bg-blue-100 w-[40vw] text-right border-blue-200 border-2 rounded-md px-8 py-2 m-8 mt-8" >{{error}}</div>
+        <div style="overflow-y: scroll; height:45vh">
+          {%for i in range(0, len)%}
+              <div class="bg-blue-100 flex w-[40vw] text-right border-blue-200 border-2 rounded-md px-8 py-2 m-8 mt-2 mb-2 pt-2 pl-2" >
+                <span class="w-[12%]  mb-4 text-[0.6rem] text-blue-800 mr-8">{{rows[i]['DATE'].strip()}}</span>  
+                <span class="w-[30%]">{{rows[i]['CATEGORY'].strip()}}</span>  
+                <span class="w-[30%]"></span>  
+                <span class="w-[20%] float-right">Rs {{rows[i]['AMOUNT']}}</span>  
+              </div>
+          {%endfor%}
         </div>
         <div class="stats px-8 py-2 m-8 mt-8">
-            Stats
+            <div class="font-bold text-2xl">Stats for the month</div>
+            <div></div>
         </div>
       </div>
     
