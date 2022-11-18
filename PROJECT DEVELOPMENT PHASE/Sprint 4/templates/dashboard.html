@@ -16,7 +16,10 @@
 
       <div class="flex">
         <div>
-          {% include 'include/addTransaction.html' %}
+          <div class="flex">
+            {% include 'include/addTransaction.html' %}
+            {% include 'include/setTrigger.html' %}
+          </div>
           {% include 'include/transactionList.html' %}
         </div>
         <div class="px-8 py-2 m-8 mt-8">

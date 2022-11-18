@@ -26,7 +26,7 @@ def getPassword(email):
 
 
 def fetchFinanceRecord(email):
-    sql_fd = f"SELECT * FROM finance WHERE email='{email}'"
+    sql_fd = f"SELECT * FROM finance WHERE email='{email}' order by date desc"
     r = execReturn(sql_fd)
     return r
 

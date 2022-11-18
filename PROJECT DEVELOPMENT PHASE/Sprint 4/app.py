@@ -74,11 +74,16 @@ def login():
 def dashboard():
     if request.method == 'POST':
         email = session['email']
-        now = datetime.now()
-        dt_string = now.strftime("%Y/%m/%d %H:%M")
-        date = dt_string
-        print(date)
-        return add_finance_record(email, request.form['category'], request.form['amount'], request.form['description'], date)
+        print(request.form)
+        # if True:
+        if request.form['t_type'] == 'add_transaction':
+            now = datetime.now()
+            dt_string = now.strftime("%Y/%m/%d %H:%M")
+            date = dt_string
+            print(date)
+            return add_finance_record(email, request.form['category'], request.form['amount'], request.form['description'], date)
+        else:
+            print("Lol bro")
     else:
         if session.get('logged_in'):
             email = session['email']
@@ -87,8 +92,8 @@ def dashboard():
             percent = (spending['expend']*100)/spending['income']
             percent = min(100, percent)
             l = len(rows)
-            left = str(spending['expend']) + \
-                " spent out of "+str(spending['income'])
+            left = "Rs "+str(spending['expend']) + \
+                " spent out of Rs "+str(spending['income'])
             return render_template('dashboard.html', rows=rows, len=l, left=left, percent=str(percent)+"%")
         return render_template('login.html')
 
