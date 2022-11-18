@@ -12,106 +12,18 @@
 </head>
 <body class="bg-gray-150">
 
-    <nav class="flex items-center justify-between flex-wrap bg-blue-500 p-6">
-        <div class="flex items-center flex-shrink-0 text-white mr-6">
-          <span class="font-semibold text-xl tracking-tight">Personal Finance Tracker</span>
-        </div>
-        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-          <div class="text-sm lg:flex-grow">
-            <a href="/dashboard" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-              Dashboard
-            </a>
-            <a href="/graph" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-              Graph
-            </a>
-            <a href="/configure" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
-              Configure
-            </a>
-          </div>
-          <button
-          onclick="window.location.href='logout'"
-          type="submit"
-          class="w-full float-right w-32 text-center py-3 rounded bg-blue-700 text-white hover:bg-blue-800 focus:outline-none"
-          >
-            Log Out
-          </button>
-        </div>
-      </nav>
-
-      <div>
-        <form method="POST" class="bg-gray-100 shadow-xl rounded w-[31rem] px-12 pt-6 pb-8 m-8 mt-8">
-          <div class="flex">
-            <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="amount">
-                Amount
-            </label>
-              <input class="shadow appearance-none border rounded w-48 py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" name="amount" id="amount" type="number" placeholder="475">
-            </div>
-    
-            <div class="mb-4 ml-12">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="amount">
-                Category
-            </label>
-              <div class="form-group bg-white shadow appearance-none border rounded h-10 w-50  text-gray-900 leading-tight focus:outline-none">
-                <select class="bg-white focus:ring-0 px-2 py-2"   name="category"  id="category">
-                  <option value="Salary Credited">Salary</option>
-                  <option value="Festival Bonus">Festival Bonus</option>
-                  <option selected="selected" value="EMI">EMI</option>
-                  <option value="Food">Food</option>
-                  <option value="Transportation">Transportation</option>
-                  <option value="Groceries">Groceries</option>
-                  <option value="Clothing">Clothing</option>
-                  <option value="Electronic">Electronic</option>
-                  <option value="Entertainment">Entertainment</option>
-                  <option value="Rent">Rent</option>
-                  <option value="Vacations">Vacations</option>
-                </select>
-              </div>    
-            </div>
-            
-          </div>
-  
-          <div class="flex ">
-            <div>
-              <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-              <textarea id="description" name="description" rows="4" class="block p-2.5 w-[19rem] text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write description here..."></textarea>
-            </div>
-            
-            <div>
-              <div>
-              <button type="submit" class="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 mx-6 my-4 mt-8 h-24 rounded inline-flex items-center">
-                <span>Add</span>
-              </button>
-            </div>
-  
-          </div>
-        </form>       
-      </div>
+    {% include 'include/navbar.html' %}
 
       <div class="flex">
-        <div style="overflow-y: scroll; height:45vh">
-          <div class="font-bold text-2xl px-8 py-2 m-8 mt-2 mb-2 pt-2 pl-2">Recent Transaction</div>
-          {%for i in range(0, len)%}
-              {% if rows[i]['AMOUNT']>0 %}
-                <div class="bg-green-100 flex w-[40vw] text-right border-green-200 border-2 rounded-md px-8 py-2 m-8 mt-2 mb-2 pt-2 pl-2" >
-                <span class="w-[12%]  mb-4 text-[0.6rem] text-green-800 mr-8">{{rows[i]['DATE'].strip()}}</span>  
-              {% else %}
-                <div class="bg-red-100 flex w-[40vw] text-right border-red-200 border-2 rounded-md px-8 py-2 m-8 mt-2 mb-2 pt-2 pl-2" >
-                <span class="w-[12%]  mb-4 text-[0.6rem] text-red-800 mr-8">{{rows[i]['DATE'].strip()}}</span>  
-              {% endif %}
-                <span class="w-[30%]">{{rows[i]['CATEGORY'].strip()}}</span>  
-                <span class="w-[30%]"></span>  
-                <span class="w-[20%] float-right">Rs {{rows[i]['AMOUNT']}}</span>  
-              </div>
-              {%endfor%}
-
-          <div class="bg-red-100 flex w-[40vw] text-right border-red-200 border-2 rounded-md px-8 py-2 m-8 mt-2 mb-2 pt-2 pl-2 invisible" >Placeholder</div>
+        <div>
+          {% include 'include/addTransaction.html' %}
+          {% include 'include/transactionList.html' %}
         </div>
-        <div class="px-8 py-2 m-8 mt-2">
-            <div class="font-bold text-2xl">Stats for the month</div>
+        <div class="px-8 py-2 m-8 mt-8">
+            <div class="font-bold text-2xl">Complete User Stats</div>
             <div class="w-[30vw] mt-4">
               <div>
-                <div class="mb-1 text-lg font-medium dark:text-white">Monthly Expense</div>
+                <div class="mb-1 text-lg font-medium dark:text-white">Expense Progress</div>
                 <div class="w-full h-6 bg-gray-300 rounded-full dark:bg-gray-700">
                   <div class="h-6 bg-red-600 rounded-full dark:bg-red-500" style="width: {{percent}}"></div>
                   <span class="mb-1 text-xs float-right pr-2 pt-2">{{left}} </span>
