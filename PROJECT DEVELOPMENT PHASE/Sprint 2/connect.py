@@ -10,6 +10,7 @@ hostname = "0c77d6f2-5da9-48a9-81f8-86b520b87518.bs2io90l08kqb1od8lcg.databases.
 cert = "DigiCertGlobalRootCA.crt"
 port = 31198
 protocol = "TCPIP"
+t = 1
 
 
 def results(command):

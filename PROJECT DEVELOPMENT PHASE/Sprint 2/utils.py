@@ -1,7 +1,5 @@
 from connect import execDB, execReturn
 
-# INSERT into user_data(username , email , pass ) values ('Manoj' , 'manoj.selvam312@gmail.com' , 'Abcd123$')
-
 
 def addUser(username, email, password):
     sql_fd = f"SELECT * FROM user WHERE username='{username}'"
