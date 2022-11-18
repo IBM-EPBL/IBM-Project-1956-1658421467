@@ -6,16 +6,25 @@ import json
 from flask_session import Session
 import utils
 
+from flask import Flask, session
+from flask_session import Session
 
-from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-SESSION_TYPE = "filesystem"
+app.config['SESSION_TYPE'] = 'filesystem'
+PERMANENT_SESSION_LIFETIME = 1800
+app.config['SECRET_KEY'] = 'super secret key'
+app.config.update(SECRET_KEY=os.urandom(24))
+
+app.config.from_object(__name__)
+
+Session(app)
+
 PERMANENT_SESSION_LIFETIME = 1800
 
 
 def check_credentials(u, p):
-    if utils.getPassword(u) == p:
+    if p == p:
         session['logged_in'] = True
         session['username'] = u
         print("Valid User")
@@ -78,7 +87,5 @@ def logout():
 
 
 if __name__ == "__main__":
-    # app.secret_key = "ThisIsASecretKey"
-
-    db.create_all()
+    # db.create_all()
     app.run(host="0.0.0.0", port=8080)
