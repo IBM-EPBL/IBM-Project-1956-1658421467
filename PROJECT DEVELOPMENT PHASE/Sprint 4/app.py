@@ -49,9 +49,8 @@ def register(u, p, e):
 def add_finance_record(e, a, c, d, dt):
     try:
         r = utils.createFinanceRecord(e, a, c, d, dt)
-        return redirect(url_for('dashboard'))
     except:
-        return redirect(url_for('dashboard'))
+        print("Error in adding entries bro")
 
 
 @app.route('/graph', methods=['GET', 'POST'])
@@ -73,28 +72,37 @@ def login():
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
     if request.method == 'POST':
+        if not session['logged_in']:
+            return render_template('login.html')
         email = session['email']
         print(request.form)
         # if True:
         if request.form['t_type'] == 'add_transaction':
+            utils.isLimitReached(email)
             now = datetime.now()
             dt_string = now.strftime("%Y/%m/%d %H:%M")
             date = dt_string
             print(date)
-            return add_finance_record(email, request.form['category'], request.form['amount'], request.form['description'], date)
+            add_finance_record(
+                email, request.form['category'], request.form['amount'], request.form['description'], date)
+        elif request.form['t_type'] == 'set_trigger':
+            limit = int(request.form['trigger'])
+            utils.setReminder(email, limit)
         else:
-            print("Lol bro")
+            print("Lol error bro")
+        return redirect(url_for('dashboard'))
     else:
         if session.get('logged_in'):
             email = session['email']
             rows = utils.fetchFinanceRecord(email)
             spending = utils.getIncomeExpend(email)
+            limit = utils.getReminder(email)
             percent = (spending['expend']*100)/spending['income']
             percent = min(100, percent)
             l = len(rows)
             left = "Rs "+str(spending['expend']) + \
                 " spent out of Rs "+str(spending['income'])
-            return render_template('dashboard.html', rows=rows, len=l, left=left, percent=str(percent)+"%")
+            return render_template('dashboard.html', rows=rows, len=l, left=left, percent=str(percent)+"%", limit=limit)
         return render_template('login.html')
 
 
