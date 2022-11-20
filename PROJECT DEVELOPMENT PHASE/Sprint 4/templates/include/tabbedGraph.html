@@ -1,0 +1,32 @@
+<div class="mb-4 border-b border-gray-200 dark:border-gray-700 mt-28">
+    <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
+        <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 rounded-t-lg border-b-2" id="pie-tab" data-tabs-target="#pie" type="button" role="tab" aria-controls="pie" aria-selected="false">Pie Chart</button>
+        </li>
+        <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="bar-tab" data-tabs-target="#bar" type="button" role="tab" aria-controls="bar" aria-selected="false">Bar Graph</button>
+        </li>
+        <!-- <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="daily-tab" data-tabs-target="#daily" type="button" role="tab" aria-controls="daily" aria-selected="false">daily</button>
+        </li> -->
+    </ul>
+</div>
+<div id="myTabContent" class="w-[40rem]">
+    <div class="hidden p-4 rounded-lg" id="pie" role="tabpanel" aria-labelledby="pie-tab">
+        <!-- <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Profile tab's associated content</strong></p> -->
+        {% include 'include/pieGraph.html' %}
+
+    </div>
+    <div class="hidden p-4 rounded-lg" id="bar" role="tabpanel" aria-labelledby="bar-tab">
+        {% include 'include/barGraph.html' %}
+        <!-- <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">bar tab's associated content</strong></p> -->
+    </div>
+    <!-- <div class="hidden p-4 rounded-lg" id="daily" role="tabpanel" aria-labelledby="daily-tab">
+        <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Settings tab's associated content</strong></p>
+    </div> -->
+</div>
+
+
+
+
+

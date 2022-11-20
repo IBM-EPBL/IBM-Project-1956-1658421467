@@ -1,0 +1,34 @@
+<canvas id="barGraph" class="w-full"></canvas>
+
+<div class="hidden" id="x-val"> {{graph['x']}} </div>
+<div class="hidden" id="y-val"> {{graph['y']}} </div>
+<script>
+    x=document.querySelector("#x-val").innerHTML;
+    y=document.querySelector("#y-val").innerHTML;
+    x=x.split(",")
+    y=y.split(",")
+    // var xValues =  ['EMI', 'Food', 'Transportation', 'Groceries', 'Clothing', 'Electronic', 'Entertainment', 'Rent', 'Vacations', 'Money Left'] ;
+    // var yValues =  [1000, 800, 620, 170, 2750, 0, 320, 0, 0, 9090] ;
+    xValues=x
+    yValues=y
+    // console.log(x,y)
+    var barColors = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46f0f0', '#f032e6', '#bcf60c', '#00000'];
+
+    new Chart("barGraph", {
+    type: "bar",
+    data: {
+        labels: xValues,
+        datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+        }]
+    },
+    options: {
+        legend: {display: false},
+        title: {
+            display: true,
+            text: "Expenses Bar Graph"
+        }
+    }
+    });
+</script>

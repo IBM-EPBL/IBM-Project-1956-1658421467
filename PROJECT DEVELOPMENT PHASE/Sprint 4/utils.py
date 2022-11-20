@@ -1,8 +1,40 @@
 import uuid
 from connect import execDB, execReturn
-positive_money = ['Salary', 'Festival Bonus']
+positive_money = ['Salary Credited', 'Festival Bonus']
 negative_money = ['EMI', 'Food', 'Transportation', 'Groceries',
                   'Clothing', 'Electronic', 'Entertainment', 'Rent', 'Vacations']
+
+# s="UPDATE reminders SET percent=60 WHERE email='vino@v.com';"
+# r = execReturn(s)
+
+
+def getGraphDetails(email):
+    sql_fd = f"SELECT * FROM finance WHERE email='{email}' order by date desc"
+    r = execReturn(sql_fd)
+    d = dict()
+    s = 0
+    n = 0
+    for i in negative_money:
+        d[i] = 0
+    # for i in positive_money:
+    #     d[i] = 0
+    for i in r:
+        if i['CATEGORY'].strip() in negative_money:
+            d[i['CATEGORY'].strip()] += abs(int(i['AMOUNT']))
+            n = n + abs(int(i['AMOUNT']))
+        else:
+            s = s + int(i['AMOUNT'])
+    d["Money Left"] = s-n
+    # print()
+    # print()
+    k = ""
+    for i in list(d.keys()):
+        k = k+i+","
+
+    v = ""
+    for i in list(d.values()):
+        v = v+str(i)+","
+    return {"x": k, "y": v}
 
 
 def triggerMail():
@@ -16,8 +48,10 @@ def getReminder(email):
 
 
 def setReminder(email, limit):
-    sql_fd = f"UPDATE reminder SET percent='{limit} WHERE email='{email}'"
-    r = execReturn(sql_fd)
+    limit = int(limit)
+    sql_fd3 = f"UPDATE reminders SET PERCENT={limit} WHERE EMAIL='{email}';"
+    print(sql_fd3)
+    r = execReturn(sql_fd3)
 
 
 def isLimitReached(email):
@@ -71,6 +105,10 @@ def getIncomeExpend(email):
     r1 = execReturn(sql_fd1)
     r2 = execReturn(sql_fd2)
     print(r1, r2)
+    if not r1[0]['1']:
+        r1[0]['1'] = 0
+    if not r2[0]['1']:
+        r2[0]['1'] = 0
     return {"income": r1[0]['1'], "expend": -r2[0]['1']}
 
 

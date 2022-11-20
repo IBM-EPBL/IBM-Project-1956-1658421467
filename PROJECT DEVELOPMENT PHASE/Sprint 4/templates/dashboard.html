@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
+    <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
     <title>Dashboard Page</title>
@@ -18,10 +21,11 @@
         <div>
           <div class="flex">
             {% include 'include/addTransaction.html' %}
-            {% include 'include/setTrigger.html' with limit=limit %}
+            {% include 'include/setTrigger.html' %}
           </div>
           {% include 'include/transactionList.html' %}
         </div>
+        
         <div class="px-8 py-2 m-8 mt-8">
             <div class="font-bold text-2xl">Complete User Stats</div>
             <div class="w-[30vw] mt-4">
@@ -32,7 +36,8 @@
                   <span class="mb-1 text-xs float-right pr-2 pt-2">{{left}} </span>
                 </div>     
               </div>
-            </div>       
+            </div>   
+            {% include 'include/tabbedGraph.html' %}    
         </div>
       </div>
     

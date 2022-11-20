@@ -32,7 +32,7 @@ def check_credentials(e, p):
         session['email'] = e
         print("Valid User")
         return redirect(url_for('dashboard'))
-    return render_template('login.html', error="Invalid Credentials")
+    return redirect(url_for(''))
 
 
 def register(u, p, e):
@@ -41,7 +41,7 @@ def register(u, p, e):
         r = utils.addUser(u, e, p)
         if (r == "Username Exists"):
             return render_template('signup.html', error="Username Exists")
-        return render_template('login.html')
+        return redirect(url_for(''))
     except:
         return render_template('signup.html', error="Error in inserting user")
 
@@ -97,14 +97,16 @@ def dashboard():
             rows = utils.fetchFinanceRecord(email)
             spending = utils.getIncomeExpend(email)
             limit = utils.getReminder(email)
-            graph = utils.getGraphDetails(email)
-            # limit = "100"
-            percent = (spending['expend']*100)/spending['income']
+            limit = "100"
+            if spending['income'] != 0:
+                percent = (spending['expend']*100)/spending['income']
+            else:
+                percent = 0
             percent = min(100, percent)
             l = len(rows)
             left = "Rs "+str(spending['expend']) + \
                 " spent out of Rs "+str(spending['income'])
-            return render_template('dashboard.html', rows=rows, len=l, left=left, percent=str(percent)+"%", limit=limit, graph=graph)
+            return render_template('dashboard.html', rows=rows, len=l, left=left, percent=str(percent)+"%", limit=limit)
         return render_template('login.html')
 
 
