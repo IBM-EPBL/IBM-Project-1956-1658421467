@@ -49,6 +49,8 @@ def register(u, p, e):
 def add_finance_record(e, a, c, d, dt):
     try:
         r = utils.createFinanceRecord(e, a, c, d, dt)
+        utils.isLimitReached(e)
+
     except:
         print("Error in adding entries bro")
 
@@ -78,7 +80,6 @@ def dashboard():
         print(request.form)
         # if True:
         if request.form['t_type'] == 'add_transaction':
-            utils.isLimitReached(email)
             now = datetime.now()
             dt_string = now.strftime("%Y/%m/%d %H:%M")
             date = dt_string
