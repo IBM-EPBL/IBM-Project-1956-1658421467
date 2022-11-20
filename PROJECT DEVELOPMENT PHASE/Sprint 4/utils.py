@@ -1,11 +1,11 @@
+from sendgrid.helpers.mail import Mail, Email, To, Content
+import os
+import sendgrid
 import uuid
 from connect import execDB, execReturn
 positive_money = ['Salary Credited', 'Festival Bonus']
 negative_money = ['EMI', 'Food', 'Transportation', 'Groceries',
                   'Clothing', 'Electronic', 'Entertainment', 'Rent', 'Vacations']
-
-# s="UPDATE reminders SET percent=60 WHERE email='vino@v.com';"
-# r = execReturn(s)
 
 
 def getGraphDetails(email):
@@ -16,17 +16,16 @@ def getGraphDetails(email):
     n = 0
     for i in negative_money:
         d[i] = 0
-    # for i in positive_money:
-    #     d[i] = 0
     for i in r:
         if i['CATEGORY'].strip() in negative_money:
             d[i['CATEGORY'].strip()] += abs(int(i['AMOUNT']))
             n = n + abs(int(i['AMOUNT']))
         else:
             s = s + int(i['AMOUNT'])
-    d["Money Left"] = s-n
-    # print()
-    # print()
+    if (s > n):
+        d["Money Left"] = s-n
+    else:
+        d["Money Left"] = 0
     k = ""
     for i in list(d.keys()):
         k = k+i+","
@@ -34,11 +33,24 @@ def getGraphDetails(email):
     v = ""
     for i in list(d.values()):
         v = v+str(i)+","
-    return {"x": k, "y": v}
+    return {"x": k[:-1], "y": v[:-1]}
 
 
-def triggerMail():
-    print("mail triggered with send grid")
+def triggerMail(email):
+    sg = sendgrid.SendGridAPIClient("")
+    from_email = Email("test@example.com")  # Change to your verified sender
+    to_email = To(email)  # Change to your recipient
+    subject = "Expense Limit Reminder"
+    content = Content(
+        "text/plain", "Your expense limit is reached. Please check and manage your funds")
+    mail = Mail(from_email, to_email, subject, content)
+
+    # Get a JSON-ready representation of the Mail object
+    mail_json = mail.get()
+
+    # Send an HTTP POST request to /mail/send
+    response = sg.client.mail.send.post(request_body=mail_json)
+    # print("mail triggered with send grid")
 
 
 def getReminder(email):
@@ -49,9 +61,8 @@ def getReminder(email):
 
 def setReminder(email, limit):
     limit = int(limit)
-    sql_fd3 = f"UPDATE reminders SET PERCENT={limit} WHERE EMAIL='{email}';"
-    print(sql_fd3)
-    r = execReturn(sql_fd3)
+    s = f"UPDATE reminders SET percent={limit} WHERE email='{email}'"
+    r = execDB(s)
 
 
 def isLimitReached(email):
@@ -62,7 +73,7 @@ def isLimitReached(email):
     income = r1[0]['1']
     expense = -r2[0]['1']
     percent = expense/income
-
+    percent = percent*100
     sql_fd = f"SELECT percent FROM reminders WHERE email='{email}'"
     r = execReturn(sql_fd)
     limit = int(r[0]['PERCENT'])
