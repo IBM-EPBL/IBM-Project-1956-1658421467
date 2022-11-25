@@ -36,9 +36,14 @@ def getGraphDetails(email):
     return {"x": k[:-1], "y": v[:-1]}
 
 
+sendGripdAPI = ""
+sendgridSender = ""
+
+
 def triggerMail(email):
-    sg = sendgrid.SendGridAPIClient("")
-    from_email = Email("test@example.com")  # Change to your verified sender
+    sg = sendgrid.SendGridAPIClient(sendGripdAPI)
+    # Change to your verified sender
+    from_email = Email(sendgridSender)
     to_email = To(email)  # Change to your recipient
     subject = "Expense Limit Reminder"
     content = Content(
@@ -51,6 +56,9 @@ def triggerMail(email):
     # Send an HTTP POST request to /mail/send
     response = sg.client.mail.send.post(request_body=mail_json)
     # print("mail triggered with send grid")
+
+
+# triggerMail("vinokrish001@gmail.com")
 
 
 def getReminder(email):
