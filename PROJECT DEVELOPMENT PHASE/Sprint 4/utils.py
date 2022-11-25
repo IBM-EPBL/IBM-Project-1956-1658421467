@@ -3,6 +3,15 @@ import os
 import sendgrid
 import uuid
 from connect import execDB, execReturn
+
+from dotenv import find_dotenv, load_dotenv
+
+dotenv_path = find_dotenv()
+load_dotenv(dotenv_path)
+
+sendGripdAPI = os.getenv("sendGripdAPI")
+sendgridSender = os.getenv("sendgridSender")
+
 positive_money = ['Salary Credited', 'Festival Bonus']
 negative_money = ['EMI', 'Food', 'Transportation', 'Groceries',
                   'Clothing', 'Electronic', 'Entertainment', 'Rent', 'Vacations']
@@ -34,10 +43,6 @@ def getGraphDetails(email):
     for i in list(d.values()):
         v = v+str(i)+","
     return {"x": k[:-1], "y": v[:-1]}
-
-
-sendGripdAPI = ""
-sendgridSender = ""
 
 
 def triggerMail(email):
