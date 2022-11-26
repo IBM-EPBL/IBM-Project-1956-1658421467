@@ -38,7 +38,7 @@ def register(u, p, e):
         r = utils.addUser(u, e, p)
         if (r == "Username Exists"):
             return render_template('signup.html', error="Username Exists")
-        return render_template('login.html')
+        return redirect(url_for('login'))
     except:
         return render_template('signup.html', error="Error in inserting user")
 
