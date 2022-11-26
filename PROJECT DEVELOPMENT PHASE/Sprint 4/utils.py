@@ -91,7 +91,8 @@ def isLimitReached(email):
     r = execReturn(sql_fd)
     limit = int(r[0]['PERCENT'])
     if limit < percent:
-        triggerMail()
+        print("trigger for email", email)
+        triggerMail(email)
 
 
 def addUser(name, email, password):
