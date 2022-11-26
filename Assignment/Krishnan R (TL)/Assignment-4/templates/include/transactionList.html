@@ -1,0 +1,19 @@
+<div>
+    <div class="font-bold text-2xl px-8 py-2 m-8 mt-2 mb-2 pt-2 pl-2">Recent Transaction</div>
+    <div style="overflow-y: scroll; height:45vh">
+    {%for i in range(0, len)%}
+        {% if rows[i]['AMOUNT']>0 %}
+          <div class="bg-green-100 flex w-[40vw] text-right border-green-200 border-2 rounded-md px-8 py-2 m-8 mt-2 mb-2 pt-2 pl-2" >
+          <span class="w-[12%]  mb-4 text-[0.6rem] text-green-800 mr-8">{{rows[i]['DATE'].strip()}}</span>  
+        {% else %}
+          <div class="bg-red-100 flex w-[40vw] text-right border-red-200 border-2 rounded-md px-8 py-2 m-8 mt-2 mb-2 pt-2 pl-2" >
+          <span class="w-[12%]  mb-4 text-[0.6rem] text-red-800 mr-8">{{rows[i]['DATE'].strip()}}</span>  
+        {% endif %}
+          <span class="w-[30%]">{{rows[i]['CATEGORY'].strip()}}</span>  
+          <span class="w-[30%]"></span>  
+          <span class="w-[20%] float-right">Rs {{rows[i]['AMOUNT']}}</span>  
+        </div>
+        {%endfor%}
+        <div class="bg-red-100 flex w-[40vw] text-right border-red-200 border-2 rounded-md px-8 py-2 m-8 mt-2 mb-2 pt-2 pl-2 invisible" >Placeholder</div>
+    </div>        
+  </div>

@@ -1,0 +1,26 @@
+<form method="POST" class="bg-gray-100 shadow-xl rounded-xg relative w-[12.5rem] px-4 pt-2 pb-4 m-8 mt-6">
+    <div class="mt-8">
+        <input type="hidden" id="t_type" name="t_type" value="set_trigger"/>
+        <span class="text-xl text-gray-300 font-bold">Alert when</span>
+        <span class="text-xl text-gray-300 font-bold">spending</span>
+        <span class="text-xl text-gray-300 font-bold">reaches</span>
+        <div class="flex mt-4">
+            <input name="trigger" id="trigger" type="range" min="0" max="100" value="50" class="w-full mt-4" />
+        </div>
+        <button type="submit" id="remind-button" class="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 my-4 mt-8 w-full rounded ">
+            <span>Remind @ 10%</span>
+        </button>
+    </div>
+    <span class="text-xs absolute bottom-0 right-0 mb-2 mr-2 float-right">Current reminder at {{limit}} %</span>
+</form>   
+
+<script>
+    const selectElement = document.querySelector('#trigger');
+    const result = document.querySelector('#remind-button');
+    let x= selectElement.value;
+    result.textContent = "Remind @ "+x+"%";
+    selectElement.addEventListener('change', (event) => {
+        x= selectElement.value;
+        result.textContent = "Remind @ "+x+"%";
+    });
+</script>
