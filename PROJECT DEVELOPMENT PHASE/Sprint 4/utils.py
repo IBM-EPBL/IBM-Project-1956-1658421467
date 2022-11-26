@@ -114,7 +114,10 @@ def getPassword(email):
     sql_fd = f"SELECT password FROM user WHERE email='{email}'"
     r = execReturn(sql_fd)
     # print(r[0])
-    return r[0]['PASSWORD'].strip()
+    try:
+        return r[0]['PASSWORD'].strip()
+    except:
+        return ""
 
 
 def fetchFinanceRecord(email):

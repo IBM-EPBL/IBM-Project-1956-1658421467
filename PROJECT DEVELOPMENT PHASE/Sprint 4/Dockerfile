@@ -1,10 +1,12 @@
 FROM python:3.10
+ENV sendGripdAPI ---------------------------------
+ENV sendgridSender -------------------
 LABEL maintainer="Krishnan R, vinokrish001@gmail.com"
-RUN apt-get update
-RUN mkdir /app
+COPY ./requirements.txt /app/requirements.txt
 WORKDIR /app
 COPY . /app
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 EXPOSE 5000
-ENTRYPOINT [ "python" ]
-CMD [ "app.py" ]
+CMD ["python" , "app.py" ]
+
+#  docker build - < Dockerfile

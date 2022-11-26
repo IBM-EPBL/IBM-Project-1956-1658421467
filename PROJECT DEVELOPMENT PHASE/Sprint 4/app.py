@@ -1,8 +1,5 @@
-import errno
 import os
 from flask import Flask, url_for, render_template, request, redirect, session
-import requests
-import json
 from flask_session import Session
 import utils
 from datetime import datetime
@@ -100,7 +97,10 @@ def dashboard():
             limit = utils.getReminder(email)
             graph = utils.getGraphDetails(email)
             # limit = "100"
-            percent = (spending['expend']*100)/spending['income']
+            percent = 0
+            if spending["income"] != 0:
+                percent = (spending['expend']*100)/spending['income']
+
             percent = min(100, percent)
             l = len(rows)
             left = "Rs "+str(spending['expend']) + \
@@ -125,5 +125,5 @@ def logout():
 
 if __name__ == "__main__":
     # db.create_all()
-    app.run(debug=True)
-    # app.run(host="0.0.0.0", port=5000)
+    # app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
